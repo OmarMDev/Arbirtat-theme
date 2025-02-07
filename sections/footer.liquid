@@ -274,7 +274,7 @@
             {%- form 'localization', id: 'FooterLanguageForm', class: 'localization-form' -%}
               <div>
                 <h2 class="caption-large text-body" id="FooterLanguageLabel">
-                  {{ 'localization.language_label' | t }} vfvfvf
+                  {{ 'localization.language_label' | t }}
                 </h2>
                 {%- render 'language-localization', localPosition: 'FooterLanguage' -%}
               </div>
@@ -302,7 +302,6 @@
         <small class="copyright__content"
           >&copy; {{ 'now' | date: '%Y' }}, {{ shop.name | link_to: routes.root_url -}}
         </small>
-        <small class="copyright__content">{{ powered_by_link }}</small>
         {%- if section.settings.show_policy -%}
           <ul class="policies list-unstyled">
             {%- for policy in shop.policies -%}
