@@ -9,6 +9,64 @@
  */
 {
   "sections": {
+    "slideshow_94expg": {
+      "type": "slideshow",
+      "blocks": {
+        "slide_8VqBYk": {
+          "type": "slide",
+          "settings": {
+            "image": "shopify://shop_images/putting-on-your-shoes_925x_925f7ebf-d4ae-4ac0-8b9e-d663da986fac.jpg",
+            "heading": "We offer the best products",
+            "heading_size": "h1",
+            "subheading": "Anytime, anywhere",
+            "button_label": "Browse products",
+            "link": "shopify://collections",
+            "button_style_secondary": true,
+            "box_align": "middle-center",
+            "show_text_box": false,
+            "text_alignment": "center",
+            "image_overlay_opacity": 0,
+            "color_scheme": "scheme-4",
+            "text_alignment_mobile": "center"
+          }
+        },
+        "slide_npPPDn": {
+          "type": "slide",
+          "settings": {
+            "image": "shopify://shop_images/casual-urban-menswear.jpg",
+            "heading": "We care!",
+            "heading_size": "h1",
+            "subheading": "Elevate Your Standards: Discover Expertly Crafted Goods for the Meticulous Shopper.",
+            "button_label": "",
+            "link": "",
+            "button_style_secondary": true,
+            "box_align": "middle-center",
+            "show_text_box": false,
+            "text_alignment": "center",
+            "image_overlay_opacity": 30,
+            "color_scheme": "scheme-3",
+            "text_alignment_mobile": "center"
+          }
+        }
+      },
+      "block_order": [
+        "slide_8VqBYk",
+        "slide_npPPDn"
+      ],
+      "custom_css": [
+        "div {opacity: ;}"
+      ],
+      "settings": {
+        "layout": "full_bleed",
+        "slide_height": "medium",
+        "slider_visual": "dots",
+        "auto_rotate": true,
+        "change_slides_speed": 3,
+        "image_behavior": "ambient",
+        "show_text_below": true,
+        "accessibility_info": "Slideshow about our brand"
+      }
+    },
     "image_banner": {
       "type": "image-banner",
       "blocks": {
@@ -22,7 +80,7 @@
         "button": {
           "type": "buttons",
           "settings": {
-            "button_label_1": "All products",
+            "button_label_1": "Browse offers",
             "button_link_1": "shopify://collections/all",
             "button_style_secondary_1": true,
             "button_label_2": "",
@@ -53,6 +111,9 @@
     },
     "featured_collection": {
       "type": "featured-collection",
+      "custom_css": [
+        "a.button::after {opacity: 0;}"
+      ],
       "settings": {
         "title": "Trending now",
         "heading_size": "h1",
@@ -81,6 +142,7 @@
     }
   },
   "order": [
+    "slideshow_94expg",
     "image_banner",
     "featured_collection"
   ]
