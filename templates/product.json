@@ -67,7 +67,7 @@
         "share"
       ],
       "custom_css": [
-        "button.shopify-payment-button__button::after {opacity : 0;}"
+        "button.shopify-payment-button__button::after {opacity: 0;}"
       ],
       "settings": {
         "enable_sticky_info": true,
