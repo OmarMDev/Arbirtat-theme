@@ -111,7 +111,7 @@
         "row_mPX684": {
           "type": "row",
           "settings": {
-            "image": "shopify://shop_images/the-man-in-the-hat.jpg",
+            "image": "{{ product.metafields.custom.product_page_content.value.display_image.value }}",
             "caption": "{{ product.metafields.custom.product_page_content.value.product_page_caption.value }}",
             "heading": "{{ product.metafields.custom.product_page_content.value.product_page_heading.value }}",
             "text": "<p>{{ product.metafields.custom.product_page_content.value.product_page_text | metafield_tag }}</p>",
