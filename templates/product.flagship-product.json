@@ -23,6 +23,12 @@
           "type": "title",
           "settings": {}
         },
+        "custom_liquid_HyCRaX": {
+          "type": "custom_liquid",
+          "settings": {
+            "custom_liquid": "{% if product.has_only_default_variant %}\n<p class=\"smile\"> :) </p>\n{% else %}\n<p class=\"now_available_custom\">\nCurrently {{ product.selected_or_first_available_variant.inventory_quantity }} available\n</p>\n{% endif %}"
+          }
+        },
         "product_grouping_picker_GDrc3p": {
           "type": "product_grouping_picker",
           "settings": {
@@ -77,6 +83,7 @@
       "block_order": [
         "vendor",
         "title",
+        "custom_liquid_HyCRaX",
         "product_grouping_picker_GDrc3p",
         "price",
         "variant_picker",
@@ -87,7 +94,8 @@
         "inventory_6hGd6y"
       ],
       "custom_css": [
-        "button.shopify-payment-button__button::after {opacity: 0;}"
+        "button.shopify-payment-button__button::after {opacity: 0;}",
+        ".now_available_custom {font-size : 13px; }"
       ],
       "settings": {
         "enable_sticky_info": true,
