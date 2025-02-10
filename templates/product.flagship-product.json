@@ -105,6 +105,52 @@
         "padding_bottom": 12
       }
     },
+    "multirow_6GRedQ": {
+      "type": "multirow",
+      "blocks": {
+        "row_mPX684": {
+          "type": "row",
+          "settings": {
+            "image": "shopify://shop_images/the-man-in-the-hat.jpg",
+            "caption": "{{ product.metafields.custom.product_page_content.value.product_page_caption.value }}",
+            "heading": "{{ product.metafields.custom.product_page_content.value.product_page_heading.value }}",
+            "text": "<p>{{ product.metafields.custom.product_page_content.value.product_page_text | metafield_tag }}</p>",
+            "button_label": "",
+            "button_link": ""
+          }
+        },
+        "row_e4Ywne": {
+          "type": "row",
+          "settings": {
+            "image": "shopify://shop_images/tshirts.jpg",
+            "caption": "This is Static",
+            "heading": "High quality fabrics",
+            "text": "<p>This text is static, meaning it won't change, regardless of where this product page is being used.</p>",
+            "button_label": "Learn more",
+            "button_link": "https://google.com"
+          }
+        }
+      },
+      "block_order": [
+        "row_mPX684",
+        "row_e4Ywne"
+      ],
+      "settings": {
+        "image_height": "medium",
+        "desktop_image_width": "medium",
+        "heading_size": "h1",
+        "text_style": "body",
+        "button_style": "secondary",
+        "desktop_content_position": "middle",
+        "desktop_content_alignment": "left",
+        "image_layout": "alternate-left",
+        "section_color_scheme": "",
+        "row_color_scheme": "",
+        "mobile_content_alignment": "left",
+        "padding_top": 36,
+        "padding_bottom": 36
+      }
+    },
     "related-products": {
       "type": "related-products",
       "settings": {
@@ -126,6 +172,7 @@
   },
   "order": [
     "main",
+    "multirow_6GRedQ",
     "related-products"
   ]
 }
