@@ -23,6 +23,16 @@
           "type": "title",
           "settings": {}
         },
+        "product_grouping_picker_GDrc3p": {
+          "type": "product_grouping_picker",
+          "settings": {
+            "heading": "Sleeve length Picker",
+            "picker_type": "button",
+            "grouping_label": "Sleeve Length",
+            "option_type_metafield_key": "product_grouping_option_one",
+            "option_value_metafield_key": "product_grouping_option_one_value"
+          }
+        },
         "price": {
           "type": "price",
           "settings": {}
@@ -67,6 +77,7 @@
       "block_order": [
         "vendor",
         "title",
+        "product_grouping_picker_GDrc3p",
         "price",
         "variant_picker",
         "quantity_selector",
