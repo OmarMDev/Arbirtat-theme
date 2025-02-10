@@ -897,6 +897,57 @@
         }
       ]
     },
+        {
+      "type": "product_grouping_picker",
+      "name": "Product Grouping Picker",
+      "limit": 3,
+      "settings": [
+        {
+          "type": "text",
+          "id": "heading",
+          "default": "Product Grouping Picker",
+          "label": "Product Grouping Picker Option"
+        },
+        {
+          "type": "select",
+          "id": "picker_type",
+          "options": [
+            {
+              "value": "dropdown",
+              "label": "t:sections.main-product.blocks.variant_picker.settings.picker_type.options__1.label"
+            },
+            {
+              "value": "button",
+              "label": "t:sections.main-product.blocks.variant_picker.settings.picker_type.options__2.label"
+            }
+          ],
+          "default": "button",
+          "label": "t:sections.main-product.blocks.variant_picker.settings.picker_type.label"
+        },
+        {
+          "type": "text",
+          "id": "grouping_label",
+          "default": "Grouping 1",
+          "label": "Product Grouping Label"
+        },
+        {
+          "type": "text",
+          "id": "option_type_metafield_key",
+          "label": "Option Metafield Key",
+          "info": "Used for the grouping option",
+          "default": "product_grouping_option_one"
+        },
+        {
+          "type": "text",
+          "id": "option_value_metafield_key",
+          "label": "Option Value Metafield Key",
+          "info": "Used for the grouping option value text",
+          "default": "product_grouping_option_one_value"
+        }
+
+      ]
+    },
+
     {
       "type": "buy_buttons",
       "name": "t:sections.main-product.blocks.buy_buttons.name",
