@@ -47,7 +47,7 @@
         "custom_liquid_Crwa84": {
           "type": "custom_liquid",
           "settings": {
-            "custom_liquid": "<label for=\"message\" class=\"form__label\">Message:</label>\n<div class=\"field anotherone\">\n  <textarea id=\"message\" class=\"text-area field__input\" placeholder=\"Message\" name=\"properties[Message]\"form=\"product-form-{{ section.id }}\"></textarea>\n</div>"
+            "custom_liquid": "<label for=\"message\" class=\"form__label\">Message:</label>\n<div class=\"field\">\n  <textarea id=\"message\" class=\"text-area field__input\" placeholder=\"Message\" name=\"properties[Message]\"form=\"product-form-{{ section.id }}\"></textarea>\n</div>"
           }
         },
         "quantity_selector": {
@@ -94,7 +94,8 @@
         "inventory_6hGd6y"
       ],
       "custom_css": [
-        "button.shopify-payment-button__button::after {opacity: 0;}"
+        "button.shopify-payment-button__button::after {opacity: 0;}",
+        ".text-area {font-size: 12px;}"
       ],
       "settings": {
         "enable_sticky_info": true,
