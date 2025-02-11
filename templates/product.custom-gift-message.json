@@ -44,6 +44,12 @@
             "swatch_shape": "circle"
           }
         },
+        "custom_liquid_Crwa84": {
+          "type": "custom_liquid",
+          "settings": {
+            "custom_liquid": "<label for=\"message\" class=\"form__label\">Message:</label>\n<div class=\"field\">\n  <textarea id=\"message\" class=\"text-area field__input\" placeholder=\"Message\" name=\"properties[Message]\"form=\"product-form-{{ section.id }}\"></textarea>\n</div>"
+          }
+        },
         "quantity_selector": {
           "type": "quantity_selector",
           "settings": {}
@@ -80,6 +86,7 @@
         "product_grouping_picker_GDrc3p",
         "price",
         "variant_picker",
+        "custom_liquid_Crwa84",
         "quantity_selector",
         "buy_buttons",
         "description",
