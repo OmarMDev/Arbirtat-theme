@@ -95,7 +95,7 @@
       ],
       "custom_css": [
         "button.shopify-payment-button__button::after {opacity: 0;}",
-        ".text-area {font-size: 12px;}"
+        ".text-area {font-size: 14px;}"
       ],
       "settings": {
         "enable_sticky_info": true,
