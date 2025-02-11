@@ -47,7 +47,7 @@
         "custom_liquid_Crwa84": {
           "type": "custom_liquid",
           "settings": {
-            "custom_liquid": "<label for=\"message\" class=\"form__label\">Message:</label>\n<div class=\"field\">\n  <textarea id=\"message\" class=\"text-area field__input\" placeholder=\"Message\" name=\"properties[Message]\"form=\"product-form-{{ section.id }}\"></textarea>\n</div>"
+            "custom_liquid": "<label for=\"message\" class=\"form__label\">Message:</label>\n<div class=\"field anotherone\">\n  <textarea id=\"message\" class=\"text-area field__input\" placeholder=\"Message\" name=\"properties[Message]\"form=\"product-form-{{ section.id }}\"></textarea>\n</div>"
           }
         },
         "quantity_selector": {
