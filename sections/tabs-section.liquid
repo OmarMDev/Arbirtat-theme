@@ -1,0 +1,55 @@
+
+<div class="shopify-section section page-width">
+
+    {{ 'component-tabs-section.css' | asset_url | stylesheet_tag }}
+    <div class="tabs">
+
+    {% assign firstblock = section.blocks[0] %} 
+    {%- for block in section.blocks -%}
+        {% if block.type == "rich-text" %}
+            <input type="radio" name="tabs-example" id="tab__{{block.id}}" class="tabs__radio" 
+                {% if block == firstblock %}
+                    checked
+                {% endif %}
+            >
+            <label for="tab__{{block.id}}" class="tabs__label"> {{ block.settings.tabtitle }}</label>
+            <div class="tabs__content">
+                {{ block.settings.tabtext }}
+            </div>
+        {% endif %}
+    {%- endfor -%}
+</div>
+</div>
+
+{% schema %}
+    {
+        "name": "Tabs Section",
+        "class": "tabs__section",
+        "settings": [],
+        "blocks": [
+            { 
+                "type": "rich-text",
+                "name": "Rich Text",
+                "settings" : [{
+                    "type": "richtext",
+                    "id": "tabtext",
+                    "label": "Tab Text"
+
+                },
+                {
+                    "type": "text",
+                    "id" : "tabtitle",
+                    "label" : "Tab Title"               
+                }] 
+            
+            },
+            
+        ],
+        "presets": [
+            {
+                "name": "Tabs Section",
+                "settings": {}
+            }
+        ]
+    }
+{% endschema %}

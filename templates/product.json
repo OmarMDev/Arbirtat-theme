@@ -105,6 +105,38 @@
         "padding_bottom": 12
       }
     },
+    "tabs_section_qAzqn4": {
+      "type": "tabs-section",
+      "blocks": {
+        "rich_text_zXV6L8": {
+          "type": "rich-text",
+          "settings": {
+            "tabtext": "<p>This content is <strong>Static  </strong>as you can see from the <span style=\"text-decoration:underline\">fact</span>  that it doesn't change, however it can easily be made <em><strong>dynamic!</strong></em></p>",
+            "tabtitle": "Static"
+          }
+        },
+        "rich_text_Kjh6bb": {
+          "type": "rich-text",
+          "settings": {
+            "tabtext": "<p>Discover the scientific reasons why t-shirts are essential wardrobe staples.</p>",
+            "tabtitle": "Tab two"
+          }
+        },
+        "rich_text_6mYCnW": {
+          "type": "rich-text",
+          "settings": {
+            "tabtext": "<p>third one?</p>",
+            "tabtitle": "Tab three"
+          }
+        }
+      },
+      "block_order": [
+        "rich_text_zXV6L8",
+        "rich_text_Kjh6bb",
+        "rich_text_6mYCnW"
+      ],
+      "settings": {}
+    },
     "related-products": {
       "type": "related-products",
       "settings": {
@@ -126,6 +158,7 @@
   },
   "order": [
     "main",
+    "tabs_section_qAzqn4",
     "related-products"
   ]
 }

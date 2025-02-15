@@ -1,0 +1,28 @@
+.tabs {
+  display: flex;
+  flex-wrap: wrap;
+  /* max-width: 400px;*/
+}
+
+.tabs__label {
+  padding: 10px 16px;
+  cursor: pointer;
+}
+
+.tabs__radio {
+  display: none;
+}
+
+.tabs__content {
+  order: 1;
+  width: 100%;
+  display: none;
+}
+
+.tabs__radio:checked + .tabs__label {
+  font-weight: bold;
+  border-bottom: 2px solid black;
+}
+.tabs__radio:checked + .tabs__label + .tabs__content {
+  display: initial;
+}
