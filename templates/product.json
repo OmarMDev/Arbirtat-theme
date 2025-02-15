@@ -118,8 +118,8 @@
         "rich_text_Kjh6bb": {
           "type": "rich-text",
           "settings": {
-            "tabtext": "<p>Discover the scientific reasons why t-shirts are essential wardrobe staples.</p>",
-            "tabtitle": "Tab two"
+            "tabtext": "<p>This is dynamic! </p><p></p>{{ product.description }}",
+            "tabtitle": "Description"
           }
         },
         "rich_text_6mYCnW": {
