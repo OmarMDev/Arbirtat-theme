@@ -1,0 +1,113 @@
+{{ "glider.min.css" | asset_url | stylesheet_tag }}
+
+<style>
+    .carousel-product-card-container {
+        width: 100%;
+    }
+
+    .glider-track {
+        gap: 2rem;
+    }
+
+    .glider__container {
+        position: relative;
+    }
+
+    .glider__container .prev,
+    .glider__container .next {
+        position: absolute;
+        top: 50%;
+        transform: translateY(-50%);
+
+        background: transparent;
+        border: none;
+        cursor: pointer;
+    }
+
+    .glider__container .prev {
+        left: 0;
+    }
+
+    .glider__container .next {
+        right: 0;
+
+
+       
+    }   
+       
+</style>
+
+<div class="page-width glider__container" id="{{ section.id }}">
+    <div class="glider">
+        {% for block in section.blocks %}
+            {% if block.type == "product" %}
+                
+                
+                <div class="carousel-product-card-container">
+                    
+                    {% render 'card-product',
+                        card_product: block.settings.product,
+                        quick_add: true,
+                        section_id: section.id,
+                    %}
+                </div>
+                
+            {% endif %}
+        {% endfor %}
+    </div>
+    
+    <button class="prev"> &lt; </button>
+    <button class="next"> &gt; </button>
+</div>
+    
+<script src="{{ 'glider.min.js' | asset_url }}" async></script>
+
+
+<script>
+    window.addEventListener("DOMContentLoaded", () => {
+      new Glider(document.querySelector('.glider'), {
+        slidesToShow: {{ section.settings.slidesToShow }},
+        arrows : {
+            prev: '#{{ section.id }} .prev',
+            next: '#{{ section.id }} .next'
+            },
+        });
+
+        
+
+    })
+</script>
+
+{% schema %}
+    {
+        "name": "Carousel",
+        "settings": [
+            {
+                "type": "number",
+                "id": "slidesToShow",
+                "label": "Slides to show",
+                "default": 1
+            }
+        ],
+        "blocks": [
+            {
+                "type": "product",
+                "name": "product",
+                "settings": [
+                    {
+                        "type": "product",
+                        "id": "product",
+                        "label": "Product"
+                    },
+                    {
+                        "type": "text",
+                        "id": "title",  
+                        "label": "Optional, otherwise product title will be used"}
+                ]
+            }
+        ],
+        "presets": [
+            {"name": "Carousel"}
+        ]
+    }
+{% endschema %}
