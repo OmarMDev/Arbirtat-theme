@@ -154,11 +154,70 @@
         "padding_top": 36,
         "padding_bottom": 28
       }
+    },
+    "carousel_nJnTMH": {
+      "type": "carousel",
+      "blocks": {
+        "product_nDzhxF": {
+          "type": "product",
+          "settings": {
+            "product": "chequered-red-shirt",
+            "title": ""
+          }
+        },
+        "product_kgiAfa": {
+          "type": "product",
+          "settings": {
+            "product": "classic-leather-jacket",
+            "title": ""
+          }
+        },
+        "product_NdLmBD": {
+          "type": "product",
+          "settings": {
+            "product": "longsleeve-cotton-top",
+            "title": ""
+          }
+        },
+        "product_NNXctF": {
+          "type": "product",
+          "settings": {
+            "product": "ocean-blue-shirt",
+            "title": ""
+          }
+        },
+        "product_9RrEUh": {
+          "type": "product",
+          "settings": {
+            "product": "plain-t-shirt",
+            "title": ""
+          }
+        },
+        "product_tEEKz6": {
+          "type": "product",
+          "settings": {
+            "product": "yellow-wool-jumper",
+            "title": ""
+          }
+        }
+      },
+      "block_order": [
+        "product_nDzhxF",
+        "product_kgiAfa",
+        "product_NdLmBD",
+        "product_NNXctF",
+        "product_9RrEUh",
+        "product_tEEKz6"
+      ],
+      "settings": {
+        "slidesToShow": 4
+      }
     }
   },
   "order": [
     "main",
     "tabs_section_qAzqn4",
-    "related-products"
+    "related-products",
+    "carousel_nJnTMH"
   ]
 }

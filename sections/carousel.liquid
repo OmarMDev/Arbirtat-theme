@@ -22,6 +22,10 @@
         background: transparent;
         border: none;
         cursor: pointer;
+
+        transition: font-size 0.1s ease;
+
+        display: none;
     }
 
     .glider__container .prev {
@@ -29,11 +33,20 @@
     }
 
     .glider__container .next {
-        right: 0;
-
-
-       
+        right: 0; 
     }   
+
+    .glider__container .prev:hover,
+    .glider__container .next:hover {
+        font-size : 2rem;
+    }
+
+    @media (min-width: 768px) {
+        .glider__container .prev,
+        .glider__container .next {
+            display: block;
+        }
+    }
        
 </style>
 
@@ -66,16 +79,24 @@
 <script>
     window.addEventListener("DOMContentLoaded", () => {
       new Glider(document.querySelector('.glider'), {
-        slidesToShow: {{ section.settings.slidesToShow }},
+        slidesToShow: 1,
         arrows : {
             prev: '#{{ section.id }} .prev',
             next: '#{{ section.id }} .next'
             },
+            draggable: true,
+
+            responsive: [
+                {
+                    breakpoint: 768,
+                    settings: {
+                        slidesToShow: {{ section.settings.slidesToShow }}
+                    }
+                }
+            ]
+            
         });
-
-        
-
-    })
+    });
 </script>
 
 {% schema %}
