@@ -1,0 +1,119 @@
+<style>
+    recently-viewed-products .grid {
+        display: grid;
+        grid-template-columns: repeat({{ section.settings.number_of_products }}, 1fr); 
+        gap: 1rem;
+        }
+
+</style>
+
+
+<div class="page-width">
+    <h3> {{ section.settings.title }} </h3>
+    <recently-viewed-products>
+        <div class="grid">
+            <!-- this is just a comment -->
+        </div>
+    </recently-viewed-products>
+</div>
+
+<script>
+    {% comment %} The script contains Liquid elements, so it must be left in this file {% endcomment %}
+
+     class recentlyViewedProducts extends HTMLElement {
+        constructor() {
+            super ();
+            document.addEventListener("DOMContentLoaded", this.loadRecentProducts.bind(this));
+        }
+
+        async loadRecentProducts() {
+            const concatenatedString = localStorage.getItem("recentlyViewedProducts");
+            const productArray = concatenatedString.split("||");            
+            const productHandles = productArray.map(product => product.slice(2, -2)); 
+            const products = await Promise.all(
+                productHandles.map( async (productHandle) => {
+                    const response = await fetch(`/products/${productHandle}?sections=card-product-section`);
+                    const data = await response.json();
+                    return data['card-product-section'];
+                })
+            )
+
+            products.forEach( product => {
+                this.querySelector(".grid").innerHTML += product;
+            
+            })
+        }
+
+
+    } 
+
+    customElements.define("recently-viewed-products", recentlyViewedProducts);
+
+    function updateRecentlyViewedProducts() {
+        
+        const rawProductHandle = "{{ product.handle }}";
+        const productHandle = `%-${rawProductHandle}-%`;
+        const recentlyViewedProducts = localStorage.getItem("recentlyViewedProducts");
+
+        if (recentlyViewedProducts) {
+            
+            if (!recentlyViewedProducts.includes(productHandle)) {
+                {% comment %} console.log(`product ${productHandle} not in array`, recentlyViewedProducts); {% endcomment %}
+                if (recentlyViewedProducts.includes("||")) {
+                    const recentlyViewedProductsArray = recentlyViewedProducts.split("||");
+                    while (recentlyViewedProductsArray.length > {{ section.settings.number_of_products }} - 1 ) {
+                        recentlyViewedProductsArray.shift();
+                    }
+                    recentlyViewedProductsArray.push(productHandle);
+                    localStorage.setItem("recentlyViewedProducts", recentlyViewedProductsArray.join("||"));
+                    {% comment %} console.log("updated array", localStorage.getItem("recentlyViewedProducts")); {% endcomment %}
+                } else {
+                    localStorage.setItem("recentlyViewedProducts", `${recentlyViewedProducts}||${productHandle}`);
+                    {% comment %} console.log("updated array",localStorage.getItem("recentlyViewedProducts")); {% endcomment %}
+                }
+                
+            } 
+            {% comment %} console.log(`product ${productHandle} already in array, no update needed`, recentlyViewedProducts); {% endcomment %}
+        } else {
+            localStorage.setItem("recentlyViewedProducts", productHandle);
+            {% comment %} console.log(localStorage.getItem("recentlyViewedProducts")); {% endcomment %}
+        }
+        
+        
+    }
+
+
+
+    document.addEventListener("DOMContentLoaded", (event) => {
+        updateRecentlyViewedProducts();
+      });
+      
+
+</script>
+
+{% schema %}
+
+{
+    "name": "Recently Viewed",
+    "settings": [
+        {
+            "type": "number",
+            "id": "number_of_products",
+            "label": "Number of Recently Viewed Products",
+            "default": 4,
+        },
+        {
+            "type": "text",
+            "id": "title",
+            "label": "Title",
+            "default": "Recently Viewed Products"
+        }
+    ],
+    "presets": [
+        {
+            "name": "Recently Viewed"
+        }
+    ],
+}
+    
+{% endschema %}
