@@ -29,6 +29,11 @@
   transform: translateY(-1.5rem);
 }
 
+.mega-menu__content {
+  transition: opacity 0.3s ease !important;
+  transition: transform 0.3s ease !important;
+}
+
 .mega-menu[open] .mega-menu__content {
   opacity: 1;
   transform: translateY(0);

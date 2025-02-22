@@ -92,3 +92,37 @@
     {%- endfor -%}
   </ul>
 </nav>
+<script>
+
+  const items = document.querySelector('.header__inline-menu').querySelectorAll('details');
+  
+  items.forEach(item => {
+    
+    item.addEventListener("mouseover", () => {
+    
+      item.setAttribute("open", true);
+
+      item.querySelector(".mega-menu__content").addEventListener("mouseleave", () => {
+        
+        console.log("poop")
+        setTimeout(() => {
+          console.log("pkakap")
+          if (!item.matches(':hover')) {
+            item.removeAttribute('open');
+          } 
+        }, 500);
+
+      });
+      
+      {% comment %} 
+      item.addEventListener("mouseleave", () => {
+        item.removeAttribute("open");
+      }); 
+      {% endcomment %}
+      
+    });
+  
+  });
+
+
+</script>
