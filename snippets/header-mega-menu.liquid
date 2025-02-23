@@ -4,7 +4,36 @@
   Usage:
   {% render 'header-mega-menu' %}
 {% endcomment %}
+<style>
+  .mega_menu_img img{
+    height: auto;
+    width: 200%;
+    transition: transform var(--duration-long) ease;
+  }
+  .mega_menu_img{
+    padding-bottom: 20px;
+  }
+  .mega_menu_img .mega-menu__link{
+    padding-top: 0;
+  }
+  .mega_menu_img div{
+    text-align: center;
 
+    padding: 0;
+    margin: 0;
+  }
+  
+  .mega_menu_img .title{
+   padding-top: 0.8rem;
+   font-size: 1.5rem;
+  }
+  .mega_menu_img img{
+    transition: transform 0.5s ease;
+  }
+  .mega_menu_img:hover img{
+  transform: scale(1.03);
+  }
+</style>
 <nav class="header__inline-menu">
   <ul class="list-menu list-menu--inline" role="list">
     {%- for link in section.settings.menu.links -%}
@@ -30,11 +59,28 @@
                 class="mega-menu__content color-{{ section.settings.menu_color_scheme }} gradient motion-reduce global-settings-popup"
                 tabindex="-1"
               >
+                
+                
+                
                 <ul
                   class="mega-menu__list page-width{% if link.levels == 1 %} mega-menu__list--condensed{% endif %}"
                   role="list"
                 >
                   {%- for childlink in link.links -%}
+                    {% if childlink.title == '30dd27a3-4f41-4589-b9c3-cde2e62ce2f5' %} 
+                      <li class="mega_menu_img">
+                        <div class="mega-menu__column">
+                          
+                          
+                          <a href="{{ childlink.url }}">
+                            <div>
+                              {{ childlink.object.metafields.custom.featured_product_navbar_image | image_url: width: 500  | image_tag  }}
+                            </div>
+                          </a>
+                        </div>
+                      </li> 
+                  {% else %}
+                  
                     <li>
                       <a
                         id="HeaderMenu-{{ link.handle }}-{{ childlink.handle }}"
@@ -65,6 +111,7 @@
                         </ul>
                       {%- endif -%}
                     </li>
+                  {% endif %}
                   {%- endfor -%}
                 </ul>
               </div>
