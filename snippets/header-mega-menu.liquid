@@ -94,35 +94,45 @@
 </nav>
 <script>
 
-  const items = document.querySelector('.header__inline-menu').querySelectorAll('details');
-  
-  items.forEach(item => {
-    
-    item.addEventListener("mouseover", () => {
-    
-      item.setAttribute("open", true);
+  document.addEventListener('DOMContentLoaded', function() {
+    const menuItems = document.querySelectorAll('.header__inline-menu > ul > li');
+    let activeMenuItem = null; 
+    menuItems.forEach((item, index) => {
+      const detailsElement = item.querySelector('details');
+      if (!detailsElement) {
+        return;
+      }
 
-      item.querySelector(".mega-menu__content").addEventListener("mouseleave", () => {
+      const megaMenu = detailsElement.querySelector('.mega-menu__content');
+      megaMenu.style.transition = "opacity 0.3s ease, transform 0.3s ease";
+      megaMenu.offsetHeight;
+
+
+      item.addEventListener('mouseenter', () => {
+        megaMenu.style.transition = "opacity 0.3s ease, transform 0.3s ease";
+        megaMenu.offsetHeight;
+        if (activeMenuItem && activeMenuItem !== item) {
+          const previousDetailsElement = activeMenuItem.querySelector('details');
+          if (previousDetailsElement) previousDetailsElement.removeAttribute('open');
+        }
         
-        console.log("poop")
-        setTimeout(() => {
-          console.log("pkakap")
-          if (!item.matches(':hover')) {
-            item.removeAttribute('open');
-          } 
-        }, 500);
-
+        detailsElement.setAttribute('open', true);
+        
+        activeMenuItem = item; 
       });
-      
-      {% comment %} 
-      item.addEventListener("mouseleave", () => {
-        item.removeAttribute("open");
-      }); 
-      {% endcomment %}
-      
-    });
   
+      item.addEventListener('mouseleave', () => {
+        megaMenu.style.transition = "opacity 0.3s ease, transform 0.3s ease";
+        megaMenu.offsetHeight;
+        setTimeout(() => {
+          if (!item.matches(':hover')) {
+            detailsElement.removeAttribute('open');
+            megaMenu.style.transition = "opacity 0.3s ease, transform 0.3s ease";
+            megaMenu.offsetHeight;
+            if (activeMenuItem === item) activeMenuItem = null; 
+          } 
+        }, 500); // Adjust delay as needed
+      });
+    });
   });
-
-
 </script>
