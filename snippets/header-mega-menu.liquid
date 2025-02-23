@@ -94,46 +94,45 @@
 </nav>
 <script>
 
-  const items = document.querySelectorAll('.header__inline-menu details');
+  document.addEventListener('DOMContentLoaded', function() {
+    const menuItems = document.querySelectorAll('.header__inline-menu > ul > li');
+    let activeMenuItem = null; 
+    menuItems.forEach((item, index) => {
+      const detailsElement = item.querySelector('details');
+      if (!detailsElement) {
+        return;
+      }
 
-  items.forEach(item => {
-    const megaMenu = item.querySelector('.mega-menu__content');
-  
-    // Ensure initial styles are set properly
-    megaMenu.style.opacity = "0";
-    megaMenu.style.transform = "translateY(-1.5rem)";
-    megaMenu.style.transition = "opacity 0.3s ease, transform 0.3s ease";
-  
-    item.addEventListener("mouseenter", () => {
-      item.setAttribute("open", true);
-  
-      // Force reflow to ensure transition applies properly
-      void megaMenu.offsetWidth;
-  
-      // Apply transition styles after ensuring reflow
-      megaMenu.style.opacity = "1";
-      megaMenu.style.transform = "translateY(0)";
-    });
-  
-    item.addEventListener("mouseleave", () => {
-      setTimeout(() => {
-        if (!item.matches(':hover')) {
-          // Apply transition styles for closing animation
-          megaMenu.style.opacity = "0";
-          megaMenu.style.transform = "translateY(-1.5rem)";
-  
-          // Wait for animation to complete before closing <details>
-          megaMenu.addEventListener("transitionend", function closeDetails() {
-            if (!item.matches(':hover')) {
-              item.removeAttribute("open");
-            }
-            megaMenu.removeEventListener("transitionend", closeDetails);
-          });
+      const megaMenu = detailsElement.querySelector('.mega-menu__content');
+      megaMenu.style.transition = "opacity 0.3s ease, transform 0.3s ease";
+      megaMenu.offsetHeight;
+
+
+      item.addEventListener('mouseenter', () => {
+        megaMenu.style.transition = "opacity 0.3s ease, transform 0.3s ease";
+        megaMenu.offsetHeight;
+        if (activeMenuItem && activeMenuItem !== item) {
+          const previousDetailsElement = activeMenuItem.querySelector('details');
+          if (previousDetailsElement) previousDetailsElement.removeAttribute('open');
         }
-      }, 1000); // UX delay before starting the close animation
+        
+        detailsElement.setAttribute('open', true);
+        
+        activeMenuItem = item; 
+      });
+  
+      item.addEventListener('mouseleave', () => {
+        megaMenu.style.transition = "opacity 0.3s ease, transform 0.3s ease";
+        megaMenu.offsetHeight;
+        setTimeout(() => {
+          if (!item.matches(':hover')) {
+            detailsElement.removeAttribute('open');
+            megaMenu.style.transition = "opacity 0.3s ease, transform 0.3s ease";
+            megaMenu.offsetHeight;
+            if (activeMenuItem === item) activeMenuItem = null; 
+          } 
+        }, 500); // Adjust delay as needed
+      });
     });
   });
-  
-  
-
 </script>
