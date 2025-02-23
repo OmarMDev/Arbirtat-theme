@@ -39,7 +39,7 @@
     "header": {
       "type": "header",
       "custom_css": [
-        "li:first-of-type {padding-left: 20px;}",
+        "ul.list-menu {padding-left: 20px;}",
         "li {padding-left: 5px;}"
       ],
       "settings": {
@@ -47,7 +47,7 @@
         "menu": "main-menu",
         "menu_type_desktop": "mega",
         "sticky_header_type": "reduce-logo-size",
-        "show_line_separator": true,
+        "show_line_separator": false,
         "color_scheme": "scheme-1",
         "menu_color_scheme": "scheme-1",
         "enable_country_selector": true,
