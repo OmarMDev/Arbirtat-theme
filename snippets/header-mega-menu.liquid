@@ -94,35 +94,46 @@
 </nav>
 <script>
 
-  const items = document.querySelector('.header__inline-menu').querySelectorAll('details');
-  
+  const items = document.querySelectorAll('.header__inline-menu details');
+
   items.forEach(item => {
-    
-    item.addEventListener("mouseover", () => {
-    
+    const megaMenu = item.querySelector('.mega-menu__content');
+  
+    // Ensure initial styles are set properly
+    megaMenu.style.opacity = "0";
+    megaMenu.style.transform = "translateY(-1.5rem)";
+    megaMenu.style.transition = "opacity 0.3s ease, transform 0.3s ease";
+  
+    item.addEventListener("mouseenter", () => {
       item.setAttribute("open", true);
-
-      item.querySelector(".mega-menu__content").addEventListener("mouseleave", () => {
-        
-        console.log("poop")
-        setTimeout(() => {
-          console.log("pkakap")
-          if (!item.matches(':hover')) {
-            item.removeAttribute('open');
-          } 
-        }, 500);
-
-      });
-      
-      {% comment %} 
-      item.addEventListener("mouseleave", () => {
-        item.removeAttribute("open");
-      }); 
-      {% endcomment %}
-      
+  
+      // Force reflow to ensure transition applies properly
+      void megaMenu.offsetWidth;
+  
+      // Apply transition styles after ensuring reflow
+      megaMenu.style.opacity = "1";
+      megaMenu.style.transform = "translateY(0)";
     });
   
+    item.addEventListener("mouseleave", () => {
+      setTimeout(() => {
+        if (!item.matches(':hover')) {
+          // Apply transition styles for closing animation
+          megaMenu.style.opacity = "0";
+          megaMenu.style.transform = "translateY(-1.5rem)";
+  
+          // Wait for animation to complete before closing <details>
+          megaMenu.addEventListener("transitionend", function closeDetails() {
+            if (!item.matches(':hover')) {
+              item.removeAttribute("open");
+            }
+            megaMenu.removeEventListener("transitionend", closeDetails);
+          });
+        }
+      }, 1000); // UX delay before starting the close animation
+    });
   });
-
+  
+  
 
 </script>
