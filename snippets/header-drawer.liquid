@@ -4,7 +4,24 @@
   Usage:
   {% render 'header-drawer' %}
 {% endcomment %}
+<style>
+  .drawer-list-image img{
+    height: auto;
+    width: 100%;
+    transition: transform var(--duration-long) ease;
+  }
+  .drawer-list-image{
+    padding: 5vw;
+  }
 
+
+  .drawer-list-image img{
+    transition: transform 0.5s ease;
+  }
+  .drawer-list-image:hover img{
+  transform: scale(1.03);
+  }
+</style>
 <header-drawer data-breakpoint="{% if section.settings.menu_type_desktop == 'drawer' %}desktop{% else %}tablet{% endif %}">
   <details id="Details-menu-drawer-container" class="menu-drawer-container">
     <summary
@@ -18,6 +35,7 @@
     </summary>
     <div id="menu-drawer" class="gradient menu-drawer motion-reduce color-{{ section.settings.menu_color_scheme }}">
       <div class="menu-drawer__inner-container">
+
         <div class="menu-drawer__navigation-container">
           <nav class="menu-drawer__navigation">
             <ul class="menu-drawer__menu has-submenu list-menu" role="list">
@@ -50,7 +68,21 @@
                             {{ link.title | escape }}
                           </button>
                           <ul class="menu-drawer__menu list-menu" role="list" tabindex="-1">
+                            
                             {%- for childlink in link.links -%}
+                              
+                              {%  if childlink.title == '30dd27a3-4f41-4589-b9c3-cde2e62ce2f5' %}
+                                <div class="drawer-list-image">
+                                  <a href="{{ childlink.url }}">
+                                    <div>
+                                      {{ childlink.object.metafields.custom.featured_product_navbar_image | image_url: width: 500  | image_tag  }}
+                                    </div>
+                                  </a>
+                                
+
+                                </div>
+                              {% else %}
+                              
                               <li>
                                 {%- if childlink.links == blank -%}
                                   <a
@@ -114,6 +146,7 @@
                                   </details>
                                 {%- endif -%}
                               </li>
+                            {% endif %}
                             {%- endfor -%}
                           </ul>
                         </div>
