@@ -14,13 +14,6 @@
     padding: 5vw;
   }
 
-
-  .drawer-list-image img{
-    transition: transform 0.5s ease;
-  }
-  .drawer-list-image:hover img{
-  transform: scale(1.03);
-  }
 </style>
 <header-drawer data-breakpoint="{% if section.settings.menu_type_desktop == 'drawer' %}desktop{% else %}tablet{% endif %}">
   <details id="Details-menu-drawer-container" class="menu-drawer-container">
@@ -149,6 +142,7 @@
                             {% endif %}
                             {%- endfor -%}
                           </ul>
+                          
                         </div>
                       </div>
                     </details>
@@ -165,6 +159,20 @@
                     </a>
                   {%- endif -%}
                 </li>
+                {%- for childlink in link.links -%}
+                              
+                  {%  if childlink.title == '30dd27a3-4f41-4589-b9c3-cde2e62ce2f5' %}
+                    <div class="drawer-list-image">
+                      <a href="{{ childlink.url }}">
+                        <div>
+                          {{ childlink.object.metafields.custom.featured_product_navbar_image | image_url: width: 500  | image_tag  }}
+                        </div>
+                      </a>
+                    
+                      {% comment %} oifjreoijf {% endcomment %}
+                    </div>
+                  {% endif %}
+                {% endfor %}
               {%- endfor -%}
             </ul>
           </nav>
