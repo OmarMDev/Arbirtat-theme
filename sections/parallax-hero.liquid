@@ -18,7 +18,7 @@
         font-size: 5vw;
         text-decoration: none;
         position: absolute;
-        transition: all 0.2s;
+        transition: transform 0.2s;
         
     }
 
@@ -55,11 +55,13 @@
     let buildings = document.getElementById("layer2");
     let pillars = document.getElementById("layer3");
     let innerDiv = document.querySelector(".parallax-inner-div");
+    const topValue = parseInt(window.getComputedStyle(parliamentText).top, 10) || 0;
 
     window.addEventListener('scroll', () => {
         var value = window.scrollY;
 
 
+        parliamentText.style.top = (topValue + value*0.3) + 'px';
         parliament.style.top = value*0.30 + 'px';
         buildings.style.top = value*0.15 + 'px';
 
