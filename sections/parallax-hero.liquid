@@ -17,13 +17,15 @@
         font-family: 'DAGGERSQUARE', sans-serif;
         font-size: 5vw;
         text-decoration: none;
+        opacity: 0.7;
         position: absolute;
-        transition: transform 0.2s;
+        transition: transform 0.2s, opacity 0.2s;
         
     }
 
     .parallax-inner-div a:hover{
         transform: translateY(-1vw);
+        opacity: 0.9;
     }
 
     .parallax-inner-div img{
@@ -36,6 +38,17 @@
         pointer-events: none;
     }
 
+    .parallax-layer {
+        opacity: 0;
+        transform: translateY(40%);
+        transition: opacity 0.5s ease-out, transform 0.5s ease-out;
+    }
+    
+    .parallax-layer.visible {
+        opacity: 1;
+        transform: translateY(0);
+    }
+    
     
 
   
@@ -43,9 +56,30 @@
 <div class="parallax-container">
     <div class="parallax-inner-div">
         <a href="#" class="text-parliament" id="text-behind-parliament">DISCOVER</a>
-        <img src="{{ section.settings.parallax_first_layer | image_url: width: 1500 }}" alt="" id="layer1">
-        <img src="{{ section.settings.parallax_second_layer | image_url: width: 1500 }}" alt="" id="layer2">
-        <img src="{{ section.settings.parallax_third_layer | image_url: width: 1500 }}" alt="" id="layer3">
+        <img 
+            src="{{ section.settings.parallax_first_layer | image_url: width: 1500 }}" 
+            loading="lazy" 
+            alt="" 
+            id="layer1" 
+            class="parallax-layer"
+        >
+        
+        <img 
+            src="{{ section.settings.parallax_second_layer | image_url: width: 1500 }}" 
+            loading="lazy" 
+            alt="" 
+            id="layer2" 
+            class="parallax-layer"
+        >
+        
+        <img 
+            src="{{ section.settings.parallax_third_layer | image_url: width: 1500 }}" 
+            loading="lazy" 
+            alt="" 
+            id="layer3" 
+            class="parallax-layer"
+        >
+        
     </div>
 </div>
 
@@ -64,12 +98,29 @@
         parliamentText.style.top = (topValue + value*0.3) + 'px';
         parliament.style.top = value*0.30 + 'px';
         buildings.style.top = value*0.15 + 'px';
-
-       
-        
-        
-  
     })
+
+    document.addEventListener("DOMContentLoaded", () => {
+        const layers = document.querySelectorAll(".parallax-layer");
+        const total = layers.length;
+        
+        layers.forEach((img, index) => {
+            if (img.complete) {
+                addVisibleClass(img, index);
+            } else {
+                img.addEventListener("load", () => addVisibleClass(img, index));
+            }
+        });
+    
+        function addVisibleClass(img, index) {
+            setTimeout(() => {
+                img.classList.add("visible");
+            }, (total - index - 1) * 200); 
+        }
+    });
+    
+    
+    
 </script>
 
 {% schema %}
