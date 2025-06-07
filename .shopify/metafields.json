@@ -1,13 +1,35 @@
 {
   "article": [],
   "blog": [],
-  "collection": [],
+  "collection": [
+    {
+      "key": "breadcrumbs_collection_list",
+      "namespace": "custom",
+      "name": "Breadcrumbs Collection List",
+      "description": "",
+      "type": {
+        "name": "list.collection_reference",
+        "category": "REFERENCE"
+      }
+    }
+  ],
   "company": [],
   "company_location": [],
   "location": [],
   "market": [],
   "order": [],
-  "page": [],
+  "page": [
+    {
+      "key": "breadcrumb_link_list",
+      "namespace": "custom",
+      "name": "Breadcrumb Link List",
+      "description": "List of links for the breadcrumbs",
+      "type": {
+        "name": "list.link",
+        "category": "LINK"
+      }
+    }
+  ],
   "product": [
     {
       "key": "sleeve-length-type",
